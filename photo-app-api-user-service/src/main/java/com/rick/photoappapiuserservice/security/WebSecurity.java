@@ -18,6 +18,10 @@ public class WebSecurity {
         http.authorizeHttpRequests(
                 (request) -> request.requestMatchers(HttpMethod.POST, "/users")
                         .permitAll());
+        // http.authorizeHttpRequests(
+        // (request) -> request.requestMatchers(HttpMethod.POST, "/users")
+        // .access(new WebExpressionAuthorizationManager(
+        // "hasIpAddress('10.0.0.13')")));
         http.sessionManagement(
                 (session) -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
 
