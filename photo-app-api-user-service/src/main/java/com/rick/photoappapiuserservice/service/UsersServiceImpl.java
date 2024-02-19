@@ -25,7 +25,8 @@ public class UsersServiceImpl implements UsersService {
     @Override
     public UserDto createUser(UserDto userDetails) {
         userDetails.setUserId(UUID.randomUUID().toString());
-        userDetails.setEncryptedPassword(bCryptPasswordEncoder.encode(userDetails.getPassword()));
+        // userDetails.setEncryptedPassword(bCryptPasswordEncoder.encode(userDetails.getPassword()));
+        userDetails.setEncryptedPassword(userDetails.getPassword());
         UserEntity userEntity = mapper.map(userDetails, UserEntity.class);
         UserEntity savedUserEntity = userRepository.save(userEntity);
         return mapper.map(savedUserEntity, UserDto.class);

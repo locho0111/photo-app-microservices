@@ -17,11 +17,9 @@ public class WebSecurity {
         http.csrf(csrf -> csrf.disable());
         http.authorizeHttpRequests(
                 (request) -> request.requestMatchers(HttpMethod.POST, "/users")
-                        .permitAll());
-        // http.authorizeHttpRequests(
-        // (request) -> request.requestMatchers(HttpMethod.POST, "/users")
-        // .access(new WebExpressionAuthorizationManager(
-        // "hasIpAddress('10.0.0.13')")));
+                        .permitAll()
+                        .requestMatchers(HttpMethod.GET, "/users/**").permitAll()
+                        .anyRequest().permitAll());
         http.sessionManagement(
                 (session) -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
 
