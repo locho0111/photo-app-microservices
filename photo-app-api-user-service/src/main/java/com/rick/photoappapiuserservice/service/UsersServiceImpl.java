@@ -24,10 +24,8 @@ public class UsersServiceImpl implements UsersService {
         userDetails.setUserId(UUID.randomUUID().toString());
         UserEntity userEntity = mapper.map(userDetails, UserEntity.class);
         userEntity.setEncryptedPassword("test encrypted password");
-        userRepository.save(userEntity);
-        return null;
-
-
+        UserEntity savedUserEntity = userRepository.save(userEntity);
+        return mapper.map(savedUserEntity, UserDto.class);
     }
 
 }
