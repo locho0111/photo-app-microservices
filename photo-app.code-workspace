@@ -1,0 +1,31 @@
+{
+	"folders": [
+		{
+			"path": "photo-app-discovery-service"
+		},
+		{
+			"name": "photo-app-api-user-service",
+			"path": "photo-app-api-user-service"
+		},
+		{
+			"name": "photo-app-api-account-management-service",
+			"path": "photo-app-api-account-management-service"
+		},
+		{
+			"name": "api-gateway",
+			"path": "api-gateway"
+		},
+		{
+			"name": "photo-app-config-server",
+			"path": "photo-app-config-server"
+		},
+		{
+			"path": "PhotoAppApiAlbums"
+		}
+	],
+	"settings": {
+		"java.compile.nullAnalysis.mode": "automatic",
+		"java.dependency.packagePresentation": "hierarchical",
+		"java.configuration.updateBuildConfiguration": "automatic"
+	}
+}
