@@ -6,6 +6,7 @@ import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.rick.photoappapiuserservice.dto.CreateUserRequestDto;
 import com.rick.photoappapiuserservice.dto.CreateUserResponseDto;
 import com.rick.photoappapiuserservice.dto.UserDto;
+import com.rick.photoappapiuserservice.dto.UserReponseModel;
 import com.rick.photoappapiuserservice.service.UsersService;
 import jakarta.validation.Valid;
 
@@ -45,5 +47,13 @@ public class UserController {
         CreateUserResponseDto savedUserResponseDto =
                 modelMapper.map(savedUserDto, CreateUserResponseDto.class);
         return new ResponseEntity<CreateUserResponseDto>(savedUserResponseDto, HttpStatus.CREATED);
+    }
+
+    @GetMapping("/{userId}")
+    public ResponseEntity<UserReponseModel> getUserByUserId(@PathVariable String userId) {
+        UserDto user = usersService.getUserByUserId(userId);
+        UserReponseModel userResponseDto = modelMapper.map(user, UserReponseModel.class);
+
+        return ResponseEntity.ok(userResponseDto);
     }
 }

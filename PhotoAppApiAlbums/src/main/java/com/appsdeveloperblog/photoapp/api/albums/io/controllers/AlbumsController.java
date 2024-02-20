@@ -1,7 +1,6 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * To change this license header, choose License Headers in Project Properties. To change this
+ * template file, choose Tools | Templates and open the template in the editor.
  */
 package com.appsdeveloperblog.photoapp.api.albums.io.controllers;
 
@@ -21,31 +20,31 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
 @RestController
-@RequestMapping("/users/{id}/albums")
+@RequestMapping("/users/{userId}/albums")
 public class AlbumsController {
-    
+
     @Autowired
     AlbumsService albumsService;
     Logger logger = LoggerFactory.getLogger(this.getClass());
-    @GetMapping( 
-            produces = { 
-                MediaType.APPLICATION_JSON_VALUE,
-                MediaType.APPLICATION_XML_VALUE,
+
+    @GetMapping(
+            produces = {
+                    MediaType.APPLICATION_JSON_VALUE
             })
-    public List<AlbumResponseModel> userAlbums(@PathVariable String id) {
+    public List<AlbumResponseModel> userAlbums(@PathVariable String userId) {
 
         List<AlbumResponseModel> returnValue = new ArrayList<>();
-        
-        List<AlbumEntity> albumsEntities = albumsService.getAlbums(id);
-        
-        if(albumsEntities == null || albumsEntities.isEmpty())
-        {
+
+        List<AlbumEntity> albumsEntities = albumsService.getAlbums(userId);
+
+        if (albumsEntities == null || albumsEntities.isEmpty()) {
             return returnValue;
         }
-        
-        Type listType = new TypeToken<List<AlbumResponseModel>>(){}.getType();
- 
+
+        Type listType = new TypeToken<List<AlbumResponseModel>>() {}.getType();
+
         returnValue = new ModelMapper().map(albumsEntities, listType);
         logger.info("Returning " + returnValue.size() + " albums");
         return returnValue;

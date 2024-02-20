@@ -1,19 +1,19 @@
 package com.rick.photoappapiuserservice.dto;
 
-import java.io.Serializable;
 import java.util.List;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class UserDto implements Serializable {
-
+@AllArgsConstructor
+@NoArgsConstructor
+public class UserReponseModel {
+    private String userId;
     private String firstName;
     private String lastName;
     private String email;
-    private String password;
-    private String userId;
-    private String encryptedPassword;
     private List<AlbumResponseModel> albums;
 }

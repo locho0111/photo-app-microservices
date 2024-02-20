@@ -44,7 +44,7 @@ public class WebSecurity {
                 (request) -> request.requestMatchers(HttpMethod.POST, "/users")
                         .permitAll()
                         .requestMatchers(HttpMethod.GET, "/users/**").permitAll()
-                        .anyRequest().authenticated());
+                        .anyRequest().permitAll());
         // http.sessionManagement(
         // (session) -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
 
