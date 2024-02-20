@@ -14,4 +14,5 @@ public class ApplicationConfig {
         modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
         return modelMapper;
     }
+
 }
